@@ -4,6 +4,7 @@ const fs = require('fs');
 const process = require('process');
 const axios = require('axios');
 const markov = require('./markov');
+const striptags = require('striptags');
 
 //accepts text, returns text as run through makeText of Markov Machine
 function markovMe(text) {
@@ -27,7 +28,7 @@ function markovFile(path) {
 async function markovUrl(url) {
 	try {
 		let response = await axios.get(url);
-		return console.log(markovMe(response.data));
+		return console.log(markovMe(striptags(response.data)));
 	} catch (err) {
 		console.log(`ERROR WITH ${url}: URL not found`);
 		process.exit(1);
