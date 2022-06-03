@@ -53,7 +53,11 @@ class MarkovMachine {
 			word = nextWord;
 		} while (text.length < numWords && chains[word] != undefined);
 
-		//join the text on a space and log it
-		console.log(text.join(' '));
+		//join the text on a space and print it
+		return text.join(' ');
 	}
 }
+
+module.exports = {
+	MarkovMachine
+};
